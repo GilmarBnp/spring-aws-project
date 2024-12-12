@@ -2,7 +2,7 @@ name: Continuos Integration With GitHub Actions
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 
