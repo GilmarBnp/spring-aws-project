@@ -39,7 +39,7 @@ jobs:
       run: mvn clean package -DskipTests
 
     - name: Docker Compose Build
-      working-directory: ./spring-aws-docker-project
+      working-directory: .
       run: docker-compose build
        
 
