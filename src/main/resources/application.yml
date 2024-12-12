@@ -4,6 +4,7 @@ cors:
   originPatterns: http://localhost:3000,http://localhost:8080,https://erudio.com.br
 file:
   upload-dir: /home/runner/work/spring-aws-docker-project/Upload_api_springaws
+  #upload-dir: /home/gil/Documents/Upload_api_springaws
 security:
   jwt:
     token:

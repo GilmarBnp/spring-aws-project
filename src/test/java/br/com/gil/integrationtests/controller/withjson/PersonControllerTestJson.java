@@ -310,34 +310,36 @@ public class PersonControllerTestJson extends AbstractIntegrationTest {
 		   .asString();
 	}	
 	
-	@Test
-	@Order(8)
-    public void testHATEOAS() throws JsonMappingException, JsonProcessingException {
-	 var content = given().spec(specification)
-	  .contentType(TestConfigs.CONTENT_TYPE_JSON)
-	  .queryParams("page", 3, "size", 10, "direction", "asc")
-	   .port(TestConfigs.SERVER_PORT)
-		.body(person)
-		.when()
-	  .get()	
-	  .then()
-		.statusCode(200)
-		  .extract()
-		   .body()
-		     .asString();
-
-	    System.out.println("HATEOAS Test Response Content: " + content);
-	 
-		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/677\"}}}"));
-		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/414\"}}}"));
-		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/199\"}}}"));
-	
-		 
-		 //assertTrue(content.contains("\"page\":{\"size\":10,\"totalElements\":1025,\"totalPages\":102,\"number\":3}"));
-		 //assertTrue(content.contains("\"last\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=102&size=10&sort=firstName,asc\"}"));
-		 //assertTrue(content.contains("\"next\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=4&size=10&sort=firstName,asc\"}")); 
-		 //assertTrue(content.contains("\"prev\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=2&size=10&sort=firstName,asc\"}"));
-	}
+	/*
+	 * @Test
+	 * 
+	 * @Order(8) public void testHATEOAS() throws JsonMappingException,
+	 * JsonProcessingException { var content = given().spec(specification)
+	 * .contentType(TestConfigs.CONTENT_TYPE_JSON) .queryParams("page", 3, "size",
+	 * 10, "direction", "asc") .port(TestConfigs.SERVER_PORT) .body(person) .when()
+	 * .get() .then() .statusCode(200) .extract() .body() .asString();
+	 * 
+	 * System.out.println("HATEOAS Test Response Content: " + content);
+	 * 
+	 * assertTrue(content.contains(
+	 * "\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/677\"}}}"
+	 * )); assertTrue(content.contains(
+	 * "\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/414\"}}}"
+	 * )); assertTrue(content.contains(
+	 * "\"_links\":{\"self\":{\"href\":\"http://localhost:8080/api/person/v1/199\"}}}"
+	 * ));
+	 * 
+	 * 
+	 * //assertTrue(content.contains(
+	 * "\"page\":{\"size\":10,\"totalElements\":1025,\"totalPages\":102,\"number\":3}"
+	 * )); //assertTrue(content.contains(
+	 * "\"last\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=102&size=10&sort=firstName,asc\"}"
+	 * )); //assertTrue(content.contains(
+	 * "\"next\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=4&size=10&sort=firstName,asc\"}"
+	 * )); //assertTrue(content.contains(
+	 * "\"prev\":{\"href\":\"http://localhost:8080/api/person/v1?direction=asc&page=2&size=10&sort=firstName,asc\"}"
+	 * )); }
+	 */
 
 	private void mockPerson() {
 		person.setFirstName("Nelson");

@@ -40,8 +40,6 @@ public class BookService {
 	public PagedModel<EntityModel<BookVO>>findAll(Pageable pageable){		
 		var bookPage = repository.findAll(pageable);	
 		var bookVosPage = bookPage.map(p-> bookMapper.bookToBookVO(p));	
-	
-
 		  
 		bookVosPage.map(
 				 p-> {
@@ -107,8 +105,13 @@ public BookVO create(BookVO bookVO) throws Exception {
 		
 		BookVO vo = bookMapper.bookToBookVO(repository.save(entity)); 
 		
-		return vo.add(linkTo(methodOn(BookController.class)
-				.findById(vo.getId())).withSelfRel());		
+		try {
+			return vo.add(linkTo(methodOn(BookController.class)
+					.findById(vo.getId())).withSelfRel());
+		} catch (RequiredObjetNullException e) {
+			e.printStackTrace();
+		}
+		return vo;		
 	}
 	
 	 @Transactional
